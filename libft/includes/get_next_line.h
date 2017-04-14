@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_printf.c                                   :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/28 17:18:47 by jebossue          #+#    #+#             */
-/*   Updated: 2017/03/28 17:18:50 by jebossue         ###   ########.fr       */
+/*   Created: 2016/12/01 19:21:36 by jebossue          #+#    #+#             */
+/*   Updated: 2017/03/27 19:43:11 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-void	ft_free_param(t_arg *param)
-{
-	if (param == NULL)
-		return ;
-	ft_free_param(param->next);
-	free(param);
-}
+# define BUFF_SIZE 1
 
-void	ft_free_printf(char *buff, t_arg *param)
+typedef struct	s_struct
 {
-	free(buff);
-	ft_free_param(param);
-}
+	int		ret;
+	char	buff[BUFF_SIZE];
+	int		slash;
+	int		i;
+}				t_struct;
+
+int				get_next_line(const int fd, char **line);
+
+#endif

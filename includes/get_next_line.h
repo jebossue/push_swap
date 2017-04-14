@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_dec_flags.c                               :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/28 17:20:04 by jebossue          #+#    #+#             */
-/*   Updated: 2017/03/28 17:20:07 by jebossue         ###   ########.fr       */
+/*   Created: 2016/12/01 19:21:36 by jebossue          #+#    #+#             */
+/*   Updated: 2017/03/27 19:43:11 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_write_dec_plus(char *buff, int is_neg)
-{
-	*buff = is_neg == TRUE ? '-' : '+';
-	++buff;
-	return (buff);
-}
+# define BUFF_SIZE 1
 
-char	*ft_write_dec_space(char *buff)
+typedef struct	s_struct
 {
-	*buff = ' ';
-	++buff;
-	return (buff);
-}
+	int		ret;
+	char	buff[BUFF_SIZE];
+	int		slash;
+	int		i;
+}				t_struct;
+
+int				get_next_line(const int fd, char **line);
+
+#endif
