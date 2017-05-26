@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   ft_isdoublon.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 15:03:38 by jebossue          #+#    #+#             */
-/*   Updated: 2017/04/14 15:03:44 by jebossue         ###   ########.fr       */
+/*   Created: 2017/04/14 17:22:23 by jebossue          #+#    #+#             */
+/*   Updated: 2017/05/26 17:23:09 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_digit(char **av)
-{
-	long int nb;
+#include "libft.h"
 
-	av++;
+int	ft_isdoublon(char **av)
+{
+	int	i;
+	int	nb;
+	int	nbcomp;
+
 	while (*av)
 	{
+	printf("av : %s\n", *av);
 		nb = ft_atoi_long(*av);
-		if ((nb == 0 && ft_strcmp(*av, "0") != 0) || (nb > 2147483648 ||
-					nb < -2147483647))
-			return (0);
-		if (ft_isnbr(ft_atoi_long(*av)) == 0)
-			return (0);
+		i = 0;
 		av++;
+//	printf("%s\n", ++(*av));
+		while (*av)
+		{
+			i++;
+			nbcomp = ft_atoi_long(*av);
+			if (nb == nbcomp)
+				return (0);
+			av++;
+		}
+		av = av - i;
 	}
 	return (1);
 }
-

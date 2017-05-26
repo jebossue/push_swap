@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/04/14 16:26:33 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/05/26 17:45:05 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,14 @@
 
 int	main(int ac, char **av)
 {
-	int	*nbr;
-
-	if (ac < 2 || ft_isint(av) == 0)
-		ft_printf("Error");
+	av++;
 	
+	if (/*get_next_line(0, av) != 1 ||*/ ac < 2 || ft_isint(av) == 0 /*||
+			ft_isdoublon(av) == 0*/)
+	{
+		ft_printf("Error\n");
+	}
+/*	else
+		ft_printf("OK\n");*/
 	return (0);
 }

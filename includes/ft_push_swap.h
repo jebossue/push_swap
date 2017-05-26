@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/04/14 15:10:03 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/04/14 17:49:48 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,7 @@
 # include "libft.h"
 
 int			ft_isint(char **av);
+int			ft_isdoublon(char **av);
+int			get_next_line(const int fd, char **line);
+
 #endif

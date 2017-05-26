@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 15:55:01 by jebossue          #+#    #+#             */
-/*   Updated: 2017/04/14 15:05:49 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/04/14 18:09:13 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
+int					ft_memchrint(const void *s, int c, size_t n);
 void				*ft_memadd(void *dest, const void *src, int beg, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
@@ -96,6 +97,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_isnbr(int nb);
 int					ft_isint(char **av);
+int					ft_isdoublon(char **av);
 char				*ft_itoa(intmax_t n);
 char				*ft_itoa_base(uintmax_t nbr, int base, char *abc);
 char				*ft_uitoa(uintmax_t n);
