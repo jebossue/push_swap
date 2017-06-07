@@ -6,7 +6,7 @@
 #    By: jebossue <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 15:53:25 by jebossue          #+#    #+#              #
-#    Updated: 2017/04/14 18:09:15 by jebossue         ###   ########.fr        #
+#    Updated: 2017/06/07 17:07:30 by jebossue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJLIBDIR	= objs
 
 INCDIR		= includes
 
-INCNAM = ft_printf.h libft.h
+INCNAM = ft_printf.h libft.h get_next_line.h
 INC = $(INCNAM:%=$(INCDIR)/%)
 
 SRCNAM	= ft_printf.c ft_check_params.c ft_check_specifier.c ft_digit_len.c\

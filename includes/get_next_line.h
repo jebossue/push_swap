@@ -6,14 +6,14 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/01 19:21:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/03/27 19:43:11 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/07 16:51:13 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 32
 
 typedef struct	s_struct
 {

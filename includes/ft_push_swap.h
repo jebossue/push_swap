@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/04/14 17:49:48 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/07 17:00:38 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <wchar.h>
+# include "get_next_line.h"
 # include "ft_printf.h"
 # include "libft.h"
 

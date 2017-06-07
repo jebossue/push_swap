@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 17:22:23 by jebossue          #+#    #+#             */
-/*   Updated: 2017/05/26 17:23:09 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/07 14:59:24 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	ft_isdoublon(char **av)
 
 	while (*av)
 	{
-	printf("av : %s\n", *av);
 		nb = ft_atoi_long(*av);
 		i = 0;
 		av++;
-//	printf("%s\n", ++(*av));
 		while (*av)
 		{
 			i++;
