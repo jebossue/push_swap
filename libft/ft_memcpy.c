@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/04 11:51:04 by jebossue          #+#    #+#             */
-/*   Updated: 2017/03/28 17:25:08 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/07 18:14:04 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		tmp_dest[i] = tmp_src[i];
 		i++;
 	}
-	return (dest + (int)n);
+	return (dest);
 }
