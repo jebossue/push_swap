@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/28 15:55:01 by jebossue          #+#    #+#             */
-/*   Updated: 2017/04/14 17:48:43 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:08:38 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void				*ft_memmove(void *dst, const void *src, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memadd(void *dest, const void *src, int beg, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
+void				*ft_gnlmemcpy(void *dest, const void *src, size_t n);
 
 /*
 ** Travail sur une chaine de caractere.
@@ -80,6 +81,7 @@ char				**ft_strsplit(char const *s, char c);
 char				**ft_set_custom_tab(int x, int y, char c);
 char				*ft_strndup(const char *s, size_t n);
 int					ft_nbrwords(char const *s, char c);
+int					ft_strarraycmp(char *str, char **rule);
 
 /*
 **Travail sur des nombres.

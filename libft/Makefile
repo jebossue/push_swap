@@ -6,7 +6,7 @@
 #    By: jebossue <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/28 15:53:25 by jebossue          #+#    #+#              #
-#    Updated: 2017/06/07 17:07:30 by jebossue         ###   ########.fr        #
+#    Updated: 2017/06/12 17:47:15 by jebossue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ LIBFTNAM	= ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 	  ft_bzerocustom.c ft_setcustomtab.c ft_memadd.c ft_base_digitlen.c\
 	  ft_utf8_len.c ft_uitoa.c ft_abs.c ft_itoa_base.c ft_print_bit.c\
 	  ft_nbrwords.c ft_isnbr.c ft_atoi_long.c ft_isint.c ft_isdoublon.c\
-	  get_next_line.c ft_memchrint.c\
+	  get_next_line.c ft_memchrint.c ft_strarraycmp.c ft_gnlmemcpy.c\
 
 GIT	= README.md
 

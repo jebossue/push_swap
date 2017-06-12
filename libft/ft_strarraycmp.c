@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strarraycmp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 11:51:04 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/12 17:02:00 by jebossue         ###   ########.fr       */
+/*   Created: 2017/06/12 15:50:25 by jebossue          #+#    #+#             */
+/*   Updated: 2017/06/12 16:28:03 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	ft_strarraycmp(char *str, char **rule)
 {
-	unsigned int	i;
-	const char		*tmp_src;
-	char			*tmp_dest;
+	int	result;
 
-	i = 0;
-	tmp_src = src;
-	tmp_dest = dest;
-	while (i < n)
-	{
-		tmp_dest[i] = tmp_src[i];
-		i++;
-	}
-	return (dest + (int)n);
+	while ((result = ft_strcmp(str, *(rule)++)) != 0)
+		;
+	if (result != 0)
+		return (result);
+	return (1);
 }

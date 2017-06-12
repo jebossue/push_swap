@@ -6,7 +6,7 @@
 #    By: jebossue <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/14 12:56:00 by jebossue          #+#    #+#              #
-#    Updated: 2017/06/07 16:52:19 by jebossue         ###   ########.fr        #
+#    Updated: 2017/06/12 18:43:07 by jebossue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= ft_checker.c
+SRCNAM	= ft_checker.c ft_ini.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)

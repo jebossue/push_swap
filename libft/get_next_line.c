@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 15:08:41 by jebossue          #+#    #+#             */
-/*   Updated: 2017/03/27 19:43:27 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/12 17:06:31 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ char	*ft_realloc(char **old, t_struct stru)
 	char	*tmp;
 
 	tmp = ft_memalloc(stru.i + stru.ret + 1);
-	tmp = ft_memcpy(tmp, *old, stru.i);
+	tmp = ft_gnlmemcpy(tmp, *old, stru.i);
 	if (stru.slash == -1)
-		ft_memcpy(tmp + stru.i, stru.buff, stru.ret);
+		ft_gnlmemcpy(tmp + stru.i, stru.buff, stru.ret);
 	else
-		ft_memcpy(tmp + stru.i, stru.buff, stru.slash);
+		ft_gnlmemcpy(tmp + stru.i, stru.buff, stru.slash);
 	free(*old);
 	return (tmp);
 }
@@ -40,7 +40,7 @@ void	ft_buff(char **line, t_struct stru, int length)
 	else
 	{
 		*line = ft_memalloc(length + 1);
-		*line = ft_memcpy(*line, stru.buff, length);
+		*line = ft_gnlmemcpy(*line, stru.buff, length);
 	}
 }
 
