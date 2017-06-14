@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/12 18:39:30 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/14 19:40:04 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 void	ft_free_list(b_arg *param)
 {
 	if (param == NULL)
+	{
 		return ;
+	}
 	ft_free_list(param->next);
 	free(param);
 }
