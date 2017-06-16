@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/14 19:40:06 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/16 18:11:22 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,6 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-typedef struct	a_arg
-{
-	char			*action;
-	struct a_arg	*next;
-}				b_arg;
-
 typedef struct	c_arg
 {
 	int				nbr;
@@ -37,7 +31,7 @@ int			ft_isint(char **av);
 int			ft_isdoublon(char **av);
 int			get_next_line(const int fd, char **line);
 int			ft_strarraycmp(char *str, char **rule);
-void		ft_free_list(b_arg *param);
+void		ft_free_list(d_arg *param);
 int			ft_check_action(char *str);
 
 #endif

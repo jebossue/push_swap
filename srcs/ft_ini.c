@@ -6,14 +6,14 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/15 18:16:26 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/16 17:17:35 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "libft.h"
 
-void	ft_free_list(b_arg *param)
+void	ft_free_list(d_arg *param)
 {
 	if (param == NULL)
 	{
