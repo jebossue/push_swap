@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/16 18:11:22 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/21 17:25:59 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,20 @@ typedef struct	c_arg
 {
 	int				nbr;
 	struct c_arg	*next;
+	struct c_arg	*prev;
 }				d_arg;
+
+typedef struct	e_arg
+{
+	struct c_arg	*begin;
+	struct c_arg	*end;
+}				f_arg;
+
+typedef struct	g_arg
+{
+	int		ac;
+	char	**av;
+}				h_arg;
 
 int			ft_isint(char **av);
 int			ft_isdoublon(char **av);
