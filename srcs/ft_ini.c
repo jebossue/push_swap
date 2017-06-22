@@ -6,12 +6,18 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/21 19:43:35 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/22 16:35:20 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "libft.h"
+
+void	ft_free_listlist(f_arg *param)
+{
+	free(param);
+	param = NULL;
+}
 
 void	ft_free_list(d_arg *param)
 {
@@ -19,17 +25,9 @@ void	ft_free_list(d_arg *param)
 	{
 		return ;
 	}
+		printf("yo\n");
 	ft_free_list(param->next);
 	free(param);
-}
-
-int	ft_check_actionv3(char *str)
-{
-	char	*rrr;
-
-	if (ft_strcmp(str, rrr = "rrr") == 0)
-		return (0);
-	return (1);
 }
 
 int	ft_check_actionv2(char *str)
@@ -39,18 +37,21 @@ int	ft_check_actionv2(char *str)
 	char	*rr;
 	char	*rra;
 	char	*rrb;
+	char	*rrr;
 
 	if (ft_strcmp(str, ra = "ra") == 0)
-		return (0);
+		return (6);
 	if (ft_strcmp(str, rb = "rb") == 0)
-		return (0);
+		return (7);
 	if (ft_strcmp(str, rr = "rr") == 0)
-		return (0);
+		return (8);
 	if (ft_strcmp(str, rra = "rra") == 0)
-		return (0);
+		return (9);
 	if (ft_strcmp(str, rrb = "rrb") == 0)
-		return (0);
-	return (ft_check_actionv3(str));
+		return (10);
+	if (ft_strcmp(str, rrr = "rrr") == 0)
+		return (11);
+	return (0);
 }
 
 int	ft_check_action(char *str)
@@ -62,14 +63,14 @@ int	ft_check_action(char *str)
 	char	*pb;
 
 	if (ft_strcmp(str, sa = "sa") == 0)
-		return (0);
+		return (1);
 	if (ft_strcmp(str, sb = "sb") == 0)
-		return (0);
+		return (2);
 	if (ft_strcmp(str, ss = "ss") == 0)
-		return (0);
+		return (3);
 	if (ft_strcmp(str, pa = "pa") == 0)
-		return (0);
+		return (4);
 	if (ft_strcmp(str, pb = "pb") == 0)
-		return (0);
+		return (5);
 	return (ft_check_actionv2(str));
 }

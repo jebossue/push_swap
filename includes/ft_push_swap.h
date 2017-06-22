@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/21 17:25:59 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/22 16:35:22 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int			get_next_line(const int fd, char **line);
 int			ft_strarraycmp(char *str, char **rule);
 void		ft_free_list(d_arg *param);
 int			ft_check_action(char *str);
+void		ft_free_listlist(f_arg *param);
 
 #endif
