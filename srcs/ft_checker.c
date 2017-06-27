@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/23 18:55:03 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/27 20:30:31 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_createpile_a(h_arg arg, d_arg **pile_a, f_arg **list_a)
 		return ;
 	if ((*pile_a = (d_arg *)malloc(sizeof(*pile_a))) == NULL)
 		return ;
+	*pile_a = NULL;
 	while (*arg.av)
 	{
 		if ((tmp = (d_arg *)malloc(sizeof(*tmp))) == NULL)
@@ -61,53 +62,57 @@ void	ft_createpile_a(h_arg arg, d_arg **pile_a, f_arg **list_a)
 	tmp = NULL;
 }
 
-void	ft_createpile_b(h_arg arg, d_arg **pile_b, f_arg **list_b)
+void	ft_createpile_b(d_arg **pile_b, f_arg **list_b)
 {
-	(void)arg;
 	if ((*pile_b = (d_arg *)malloc(sizeof(*pile_b))) == NULL)
 		return ;
-	(*pile_b)->nbr = 0;
-	if ((*pile_b)->next == NULL)
-		printf("yo\n");
+//	(*pile_b)->nbr = 0;
+//	if ((*pile_b)->next == NULL)
+//		printf("yo\ny);
 	if ((*list_b = (f_arg *)malloc(sizeof(*list_b))) == NULL)
 		return ;
+	(*list_b)->begin = *pile_b;
+	(*list_b)->end = *pile_b;
 }
 
 int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 {
 	char	*line;
-//	d_arg	*tmp;
+	d_arg	*tmp;
 	int		instruction;
 	f_arg	*list_a;
 	f_arg	*list_b;
 
+	instruction = arg.ac;
 	line = NULL;
 	list_a = NULL;
 	list_b = NULL;
 	if (arg.ac < 2 || ft_isint(arg.av) == 0 || ft_isdoublon(arg.av) == 0)
 		return (0);
-//	ft_createpile_a(arg, &pile_a, &list_a);
-//	ft_createpile_b(arg, &pile_b, &list_b);
-/*	tmp = list->end;
-	while (arg.ac - 1 != 0)
+	ft_createpile_a(arg, &pile_a, &list_a);
+	ft_createpile_b(&pile_b, &list_b);
+	tmp = list_a->begin;
+	while (instruction - 1 != 0)
 	{
 		printf("%d\n", tmp->nbr);
-		tmp = tmp->prev;
-		arg.ac--;
-	}*/
-	printf("yo\n");
-	while (get_next_line(0, &line) == 1)
+		tmp = tmp->next;
+		instruction--;
+	}
+/*	while (get_next_line(0, &line) == 1)
 	{
 		printf("%s\n", line);
 		if ((instruction = ft_check_action(line)) == 0)
+		{
+			ft_free_pile()
 			return (0);
+		}
 		printf("%d\n", instruction);
 //		ft_sort(line, &list_a, &list_b, instruction);
-	}
+	}*/
+	ft_free_pile(pile_a, list_a);
+	ft_free_pile(pile_b, list_b);
 	ft_free_list(list_a);
 	ft_free_list(list_b);
-	ft_free_pile(pile_a);
-	ft_free_pile(pile_b);
 	return (1);
 }
 
@@ -125,8 +130,8 @@ int	main(int ac, char **av)
 	if (ft_check(arg, pile_a, pile_b) == 0)
 	{
 		ft_printf("Error\n");
-		ft_free_pile(pile_a);
-		ft_free_pile(pile_b);
+//		ft_free_pile(pile_a); 
+//		ft_free_pile(pile_b);
 		return (0);
 	}
 /*	ft_free_list(list);

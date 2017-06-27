@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/23 18:54:59 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/06/27 20:30:36 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_isdoublon(char **av);
 int			get_next_line(const int fd, char **line);
 int			ft_strarraycmp(char *str, char **rule);
 void		ft_free_list(f_arg *param);
-void		ft_free_pile(d_arg *param);
+void		ft_free_pile(d_arg *param, f_arg *list_a);
 int			ft_check_action(char *str);
 void		ft_sort(char *line, f_arg **list_a, f_arg **list_b, int instruction);
 void		ft_s(char *line, f_arg **list_a, f_arg **list_b, int instruction);
