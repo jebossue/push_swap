@@ -16,7 +16,7 @@ SRCDIR	= srcs
 OBJDIR	= objs
 INCDIR	= includes
 
-SRCNAM	= ft_checker.c ft_ini.c
+SRCNAM	= ft_checker.c ft_ini.c ft_sort.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)

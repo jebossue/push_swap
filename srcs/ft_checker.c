@@ -98,17 +98,26 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 		tmp = tmp->next;
 		instruction--;
 	}
-/*	while (get_next_line(0, &line) == 1)
+	while (get_next_line(0, &line) == 1)
 	{
-		printf("%s\n", line);
 		if ((instruction = ft_check_action(line)) == 0)
 		{
-			ft_free_pile()
+			ft_free_pile(pile_a, list_a);
+			ft_free_pile(pile_b, list_b);
+			ft_free_list(list_a);
+			ft_free_list(list_b);
 			return (0);
 		}
-		printf("%d\n", instruction);
-//		ft_sort(line, &list_a, &list_b, instruction);
-	}*/
+		ft_sort(line, &list_a, &list_b, instruction);
+	}
+	instruction = arg.ac;
+	tmp = list_a->begin;
+	while (instruction - 1 != 0)
+	{
+		printf("%d\n", tmp->nbr);
+		tmp = tmp->next;
+		instruction--;
+	}
 	ft_free_pile(pile_a, list_a);
 	ft_free_pile(pile_b, list_b);
 	ft_free_list(list_a);
