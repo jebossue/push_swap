@@ -52,5 +52,7 @@ void		ft_s(char *line, f_arg **list_a, f_arg **list_b, int instruction);
 void		ft_p(char *line, f_arg **list_a, f_arg **list_b, int instruction);
 void		ft_r(char *line, f_arg **list_a, f_arg **list_b, int instruction);
 void		ft_rr(char *line, f_arg **list_a, f_arg **list_b, int instruction);
+int			ft_checkpile_s(f_arg *list);
+int			ft_checkpile_p(f_arg *list);
 
 #endif

@@ -89,6 +89,7 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 	list_b = NULL;
 	if (arg.ac < 2 || ft_isint(arg.av) == 0 || ft_isdoublon(arg.av) == 0)
 		return (0);
+//	if ac == 2 return av;
 	ft_createpile_a(arg, &pile_a, &list_a);
 	ft_createpile_b(&pile_b, &list_b);
 	tmp = list_a->begin;
