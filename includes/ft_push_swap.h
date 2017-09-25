@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/27 20:30:36 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/09/25 17:11:15 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ int			ft_strarraycmp(char *str, char **rule);
 void		ft_free_list(f_arg *param);
 void		ft_free_pile(d_arg *param, f_arg *list_a);
 int			ft_check_action(char *str);
-void		ft_sort(char *line, f_arg **list_a, f_arg **list_b, int instruction);
-void		ft_s(char *line, f_arg **list_a, f_arg **list_b, int instruction);
-void		ft_p(char *line, f_arg **list_a, f_arg **list_b, int instruction);
-void		ft_r(char *line, f_arg **list_a, f_arg **list_b, int instruction);
-void		ft_rr(char *line, f_arg **list_a, f_arg **list_b, int instruction);
+void		ft_sort(f_arg **list_a, f_arg **list_b, int instruction);
+void		ft_s(f_arg **list_a, f_arg **list_b, int instruction);
+void		ft_pa(f_arg **list_a, f_arg **list_b);
+void		ft_pb(f_arg **list_a, f_arg **list_b);
+void		ft_r(f_arg **list_a, f_arg **list_b, int instruction);
+void		ft_rr(f_arg **list_a, f_arg **list_b, int instruction);
 int			ft_checkpile_s(f_arg *list);
 int			ft_checkpile_p(f_arg *list);
+void		ft_adjustpile(f_arg **list);
 
 #endif

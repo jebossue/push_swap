@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/06/27 20:30:31 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/09/25 17:11:25 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_doublelst(d_arg **pile_a, d_arg *new, f_arg **list_a, int ac)
 	if (!(*pile_a))
 	{
 		(*list_a)->begin = new;
+		(*list_a)->end = new;
 		*pile_a = new;
 		return ;
 	}
@@ -55,6 +56,7 @@ void	ft_createpile_a(h_arg arg, d_arg **pile_a, f_arg **list_a)
 			return ;
 		tmp->nbr = ft_atoi(*arg.av);
 		tmp->next = NULL;
+		tmp->prev = NULL;
 		ft_doublelst(pile_a, tmp, list_a, arg.ac);
 		arg.av++;
 	}
@@ -71,6 +73,8 @@ void	ft_createpile_b(d_arg **pile_b, f_arg **list_b)
 //		printf("yo\ny);
 	if ((*list_b = (f_arg *)malloc(sizeof(*list_b))) == NULL)
 		return ;
+	(*pile_b)->next = NULL;
+	(*pile_b)->prev = NULL;
 	(*list_b)->begin = *pile_b;
 	(*list_b)->end = *pile_b;
 }
@@ -109,16 +113,16 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 			ft_free_list(list_b);
 			return (0);
 		}
-		ft_sort(line, &list_a, &list_b, instruction);
+		ft_sort(&list_a, &list_b, instruction);
 	}
 	instruction = arg.ac;
 	tmp = list_a->begin;
-	while (instruction - 1 != 0)
+	while (tmp != list_a->end)
 	{
 		printf("%d\n", tmp->nbr);
 		tmp = tmp->next;
-		instruction--;
 	}
+	printf("%d\n", tmp->nbr);
 	ft_free_pile(pile_a, list_a);
 	ft_free_pile(pile_b, list_b);
 	ft_free_list(list_a);
