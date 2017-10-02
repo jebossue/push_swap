@@ -65,7 +65,7 @@ void	ft_pa(f_arg **list_a, f_arg **list_b)
 	tmp_new->nbr = ((*list_b)->begin)->nbr;
 	tmp_new->next = (*list_a)->begin;
 	tmp_new->prev = (*list_a)->end;
-	if ((*list_a)->begin) //if pile_a existe
+	if (((*list_a)->begin)->next) //if pile_a existe
 	{
 		((*list_a)->begin)->prev = tmp_new;
 		((*list_a)->end)->next = tmp_new;
@@ -85,17 +85,12 @@ void	ft_pb(f_arg **list_a, f_arg **list_b)
 	tmp_new->nbr = ((*list_a)->begin)->nbr;
 	tmp_new->next = (*list_b)->begin;
 	tmp_new->prev = (*list_b)->end;
-	if (((*list_b)->begin)->nbr) //if pile_a existe
+	if (((*list_b)->begin)->next) //if pile_b existe
 	{
 		((*list_b)->begin)->prev = tmp_new;
 		((*list_b)->end)->next = tmp_new;
 	}
 	(*list_b)->begin = tmp_new;
-	if ((*list_a)->begin == ((*list_a)->end))
-	{
-		free((*list_a)->begin);
-		free((*list_a)->end);
-	}
 	ft_adjustpile(list_a);
 }
 

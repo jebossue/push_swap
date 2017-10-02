@@ -13,17 +13,11 @@
 #include "ft_push_swap.h"
 #include "libft.h"
 
-void	ft_free_list(f_arg *param)
+void	ft_free_pile(d_arg *param, f_arg *list)
 {
-	free(param);
-	param = NULL;
-}
-
-void	ft_free_pile(d_arg *param, f_arg *list_a)
-{
-	if (param == list_a->end)
+	if (param == list->end)
 		return ;
-	ft_free_pile(param->next, list_a);
+	ft_free_pile(param->next, list);
 	free(param);
 }
 
