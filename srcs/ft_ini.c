@@ -6,18 +6,38 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/09/25 17:11:23 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/05 17:54:55 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "libft.h"
 
-void	ft_free_pile(d_arg *param, f_arg *list)
+void	ft_free_pile_a(d_arg *param, f_arg *list)
 {
-	if (param == list->end)
+	printf("param:%d\n", param->nbr);
+	if (param == list->end_a)
+	{
+		printf("listend\n");
+		if (param == list->begin_a)
+			free(param);
 		return ;
-	ft_free_pile(param->next, list);
+	}
+	ft_free_pile_a(param->next, list);
+	free(param);
+}
+
+void	ft_free_pile_b(d_arg *param, f_arg *list)
+{
+	printf("param:%d\n", param->nbr);
+	if (param == list->end_b)
+	{
+		printf("listend\n");
+		if (param == list->begin_b)
+			free(param);
+		return ;
+	}
+	ft_free_pile_b(param->next, list);
 	free(param);
 }
 
