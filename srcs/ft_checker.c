@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/05 17:54:52 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/06 18:48:48 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_doublelst(d_arg **pile_a, d_arg *new, f_arg **list, int ac)
 	{
 		new->next = *pile_a;
 		(*list)->end_a = new;
+		printf("end_a%d\n", ((*list)->begin_a)->nbr);
+		printf("end_a%d\n", ((*list)->end_a)->nbr);
 	}
 }
 
@@ -60,8 +62,6 @@ void	ft_createpile_a(h_arg arg, d_arg **pile_a, f_arg **list)
 		ft_doublelst(pile_a, tmp, list, arg.ac);
 		arg.av++;
 	}
-	free(tmp);
-	tmp = NULL;
 }
 
 void	ft_createpile_b(d_arg **pile_b, f_arg **list)
@@ -77,25 +77,17 @@ void	ft_createpile_b(d_arg **pile_b, f_arg **list)
 int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 {
 	char	*line;
-	d_arg	*tmp;
 	int		instruction;
 	f_arg	*list;
 
-	instruction = arg.ac;
 	line = NULL;
 	list = NULL;
 	if (arg.ac < 2 || ft_isint(arg.av) == 0 || ft_isdoublon(arg.av) == 0)
 		return (0);
 //	if ac == 2 return av;
-	ft_createpile_a(arg, &pile_a, &list);
-	ft_createpile_b(&pile_b, &list);
-	tmp = pile_a;
-	while (instruction - 1 != 0)
-	{
-		printf("%d\n", tmp->nbr);
-		tmp = tmp->next;
-		instruction--;
-	}
+	ft_createpile_a(arg, &pile_a, &list); //fct boolean if malloc fail
+	ft_createpile_b(&pile_b, &list); //same
+	ft_visual(pile_a, NULL, list);
 	while (get_next_line(0, &line) == 1)
 	{
 		if ((instruction = ft_check_action(line)) == 0)
@@ -106,20 +98,23 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 		}
 		ft_sort(&pile_a, &pile_b, instruction, &list);
 	}
-	tmp = pile_a;
-	while (tmp != list->end_a)
+	ft_visual(pile_a, pile_b, list);
+	printf("free a\n");
+	if (pile_a)
 	{
-		printf("list_a:%d\n", tmp->nbr);
-		tmp = tmp->next;
+		ft_free_pile_a(pile_a, list);
+		pile_a = NULL;
 	}
-	printf("list_a %d\n", tmp->nbr);
-	printf("listend%p\n", list->end_a);
-	printf("pilend%p\n", pile_a->next);
-	ft_free_pile_a(pile_a, list);
-	printf("freepileb\n");
-	free(pile_b);
-//	ft_free_pile_b(pile_b, list);
+	printf("free b\n");
+	if (pile_b)
+	{
+		ft_free_pile_b(pile_b, list);
+		pile_b = NULL;
+	}
 	free(list);
+	list = NULL;
+	free(line);
+	line = NULL;
 	return (1);
 }
 

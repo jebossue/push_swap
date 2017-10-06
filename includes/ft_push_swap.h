@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/05 17:54:59 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/06 18:48:56 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,14 @@ void		ft_sort(d_arg **pile_a, d_arg **pile_b, int instruction,
 		f_arg **list);
 void		ft_s(d_arg **pile_a, d_arg **pile_b, int instruction,
 		f_arg **list);
-void		ft_pa(d_arg **pile_a, d_arg **pile_b);
-void		ft_pb(d_arg **pile_a, d_arg **pile_b);
+void		ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list);
+void		ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list);
 void		ft_r(f_arg **list_a, f_arg **list_b, int instruction);
 void		ft_rr(f_arg **list_a, f_arg **list_b, int instruction);
 int			ft_checkpile_s(d_arg *list);
 int			ft_checkpile_p(d_arg *list);
-void		ft_adjustpile(d_arg **list);
+void		ft_adjustpile_b(d_arg **pile_b, f_arg **list);
+void		ft_adjustpile_a(d_arg **pile_a, f_arg **list);
+void		ft_visual(d_arg *pile_a, d_arg *pile_b, f_arg *list);
 
 #endif

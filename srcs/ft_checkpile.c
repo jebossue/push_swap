@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_checkpile.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/10/06 14:15:25 by jebossue          #+#    #+#             */
+/*   Updated: 2017/10/06 18:48:49 by jebossue         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_push_swap.h"
 #include "libft.h"
 
@@ -7,31 +19,80 @@ int	ft_checkpile_s(d_arg *list)
 		return (0);
 	return (1);
 }
-/*
-int	ft_checkpile_p(f_arg *list)
+
+int	ft_checkpile_p(d_arg *list)
 {
-	if (!(list->begin)->next)
+	if (!(list->next))
 		return (0);
 	return (1);
 }
 
-void	ft_adjustpile(f_arg **list)
+void	ft_adjustpile_b(d_arg **pile_b, f_arg **list)
 {
-	if ((*list)->begin == ((*list)->end))
+	d_arg	*tmp;
+
+	if ((*pile_b)->next == *pile_b)
 	{
-		(*list)->begin = NULL;
-		(*list)->end = NULL;
+		(*list)->begin_b = NULL;
+		(*list)->end_b = NULL;
+		free(*pile_b);
 	}
-	else if (((*list)->begin)->next == (*list)->end)
+	else if ((*pile_b)->next == (*list)->end_b)
 	{
-		(*list)->begin = ((*list)->begin)->next;
-		((*list)->begin)->next = (*list)->begin;
-		((*list)->begin)->prev = (*list)->begin;
+		free(*pile_b);
+		*pile_b = (*list)->end_b;
+		(*list)->begin_b = (*list)->end_b;
+		(*pile_b)->next = *pile_b;
+		(*pile_b)->prev = *pile_b;
 	}
 	else
 	{
-		(*list)->begin = ((*list)->begin)->next;
-		((*list)->end)->next = (*list)->begin;
-		((*list)->begin)->prev = (*list)->end;
+		tmp = (*pile_b)->next;
+		free(*pile_b);
+		*pile_b = tmp;
+		(*list)->begin_b = *pile_b;
+		((*list)->end_b)->next = *pile_b;
+		(*pile_b)->prev = (*list)->end_b;
 	}
-}*/
+}
+
+void	ft_adjustpile_a(d_arg **pile_a, f_arg **list)
+{
+	d_arg	*tmp;
+	d_arg	*temp;
+
+	if ((*pile_a)->next == *pile_a)
+	{
+		(*list)->begin_a = NULL;
+		(*list)->end_a = NULL;
+		free(*pile_a);
+		*pile_a = NULL;
+		if (*pile_a)
+			printf("lol\n");
+	}
+	else if ((*pile_a)->next == (*list)->end_a)
+	{
+		printf("pile_a before free %d\n", ((*list)->end_a)->nbr);
+		temp = *pile_a;
+		free(*pile_a);
+		printf("pile_a after free %d\n", ((*list)->end_a)->nbr);
+		*pile_a = (*list)->end_a;
+		(*list)->begin_a = (*list)->end_a;
+		(*pile_a)->next = *pile_a;
+		(*pile_a)->prev = *pile_a;
+	}
+	else
+	{
+		printf("adress : %p\n", *pile_a);
+		printf("adress : %p\n", (*list)->end_a);
+		tmp = (*pile_a)->next;
+		printf("pile_a before free %d\n", ((*list)->end_a)->nbr);
+		free(*pile_a);
+		printf("begin_b: %p\n", (*list)->end_b);
+		printf("pile_a after free %d\n", ((*list)->end_a)->nbr);
+		*pile_a = tmp;
+		(*list)->begin_a = *pile_a;
+		((*list)->end_a)->next = *pile_a;
+		(*pile_a)->prev = (*list)->end_a;
+	}
+}
