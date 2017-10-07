@@ -17,8 +17,12 @@ void	ft_free_pile_a(d_arg *param, f_arg *list)
 {
 	if (param == list->end_a)
 	{
-		if (param == list->begin_a)
-			free(param);
+		free(param);
+		return ;
+	}
+	if (!list->end_a)
+	{
+		free(param);
 		return ;
 	}
 	ft_free_pile_a(param->next, list);
@@ -29,8 +33,13 @@ void	ft_free_pile_b(d_arg *param, f_arg *list)
 {
 	if (param == list->end_b)
 	{
-		if (param == list->begin_b)
-			free(param);
+	printf("yo\n");
+		free(param);
+		return ;
+	}
+	if (!list->end_b)
+	{
+		free(param);
 		return ;
 	}
 	ft_free_pile_b(param->next, list);

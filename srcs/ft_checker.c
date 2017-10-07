@@ -70,6 +70,7 @@ void	ft_createpile_b(d_arg **pile_b, f_arg **list)
 	(*pile_b)->prev = NULL;
 	(*list)->begin_b = NULL;
 	(*list)->end_b = NULL;
+	printf("pile_b : %p\n", *pile_b);
 }
 
 int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
@@ -95,23 +96,17 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 			return (0);
 		}
 		ft_sort(&pile_a, &pile_b, instruction, &list);
+		free(line);
 	}
 	ft_visual(pile_a, pile_b, list);
 	printf("free a\n");
-	if (pile_a)
-	{
-		ft_free_pile_a(pile_a, list);
-		pile_a = NULL;
-	}
+	ft_free_pile_a(pile_a, list);
+	pile_a = NULL;
 	printf("free b\n");
-	if (pile_b)
-	{
-		ft_free_pile_b(pile_b, list);
-		pile_b = NULL;
-	}
+	ft_free_pile_b(pile_b, list);
+	pile_b = NULL;
 	free(list);
 	list = NULL;
-	free(line);
 	line = NULL;
 	return (1);
 }

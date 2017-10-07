@@ -20,17 +20,19 @@ void	ft_visual(d_arg *pile_a, d_arg *pile_b, f_arg *list)
 
 	tmp_a = pile_a;
 	tmp_b = pile_b;
-	if (tmp_a)
+	if (tmp_a->next)
 	{
 		printf("pile_a : %d\n", tmp_a->nbr);
+		printf("pile_a : %p\n", tmp_a);
 		while (tmp_a != list->end_a)
 		{
 			tmp_a = tmp_a->next;
+			printf("pile_a : %p\n", tmp_a);
 			printf("pile_a : %d\n", tmp_a->nbr);
 		}
 	}
 	printf("\n");
-	if (tmp_b)
+	if (list->begin_b)
 	{
 		printf("pile_b : %d\n", tmp_b->nbr);
 		while (tmp_b != list->end_b)
