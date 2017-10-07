@@ -38,8 +38,6 @@ void	ft_doublelst(d_arg **pile_a, d_arg *new, f_arg **list, int ac)
 	{
 		new->next = *pile_a;
 		(*list)->end_a = new;
-		printf("end_a%d\n", ((*list)->begin_a)->nbr);
-		printf("end_a%d\n", ((*list)->end_a)->nbr);
 	}
 }
 

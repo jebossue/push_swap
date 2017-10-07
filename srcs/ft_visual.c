@@ -25,7 +25,6 @@ void	ft_visual(d_arg *pile_a, d_arg *pile_b, f_arg *list)
 		printf("pile_a : %d\n", tmp_a->nbr);
 		while (tmp_a != list->end_a)
 		{
-			printf("yo\n");
 			tmp_a = tmp_a->next;
 			printf("pile_a : %d\n", tmp_a->nbr);
 		}

@@ -15,10 +15,8 @@
 
 void	ft_free_pile_a(d_arg *param, f_arg *list)
 {
-	printf("param:%d\n", param->nbr);
 	if (param == list->end_a)
 	{
-		printf("listend\n");
 		if (param == list->begin_a)
 			free(param);
 		return ;
@@ -29,10 +27,8 @@ void	ft_free_pile_a(d_arg *param, f_arg *list)
 
 void	ft_free_pile_b(d_arg *param, f_arg *list)
 {
-	printf("param:%d\n", param->nbr);
 	if (param == list->end_b)
 	{
-		printf("listend\n");
 		if (param == list->begin_b)
 			free(param);
 		return ;

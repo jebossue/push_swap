@@ -72,10 +72,8 @@ void	ft_adjustpile_a(d_arg **pile_a, f_arg **list)
 	}
 	else if ((*pile_a)->next == (*list)->end_a)
 	{
-		printf("pile_a before free %d\n", ((*list)->end_a)->nbr);
 		temp = *pile_a;
 		free(*pile_a);
-		printf("pile_a after free %d\n", ((*list)->end_a)->nbr);
 		*pile_a = (*list)->end_a;
 		(*list)->begin_a = (*list)->end_a;
 		(*pile_a)->next = *pile_a;
@@ -83,13 +81,8 @@ void	ft_adjustpile_a(d_arg **pile_a, f_arg **list)
 	}
 	else
 	{
-		printf("adress : %p\n", *pile_a);
-		printf("adress : %p\n", (*list)->end_a);
 		tmp = (*pile_a)->next;
-		printf("pile_a before free %d\n", ((*list)->end_a)->nbr);
 		free(*pile_a);
-		printf("begin_b: %p\n", (*list)->end_b);
-		printf("pile_a after free %d\n", ((*list)->end_a)->nbr);
 		*pile_a = tmp;
 		(*list)->begin_a = *pile_a;
 		((*list)->end_a)->next = *pile_a;
