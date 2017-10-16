@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 14:15:25 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/06 18:48:49 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/16 21:42:14 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,65 +27,48 @@ int	ft_checkpile_p(d_arg *list)
 	return (1);
 }
 
-void	ft_adjustpile_b(d_arg **pile_b, f_arg **list)
+void	ft_adjustpile_b(d_arg **pile_b, f_arg **list, d_arg *tmp_b_next)
 {
-	d_arg	*tmp;
-
-	if ((*pile_b)->next == *pile_b)
+	if (!tmp_b_next)
 	{
+		*pile_b = NULL;
 		(*list)->begin_b = NULL;
 		(*list)->end_b = NULL;
-		free(*pile_b);
 	}
-	else if ((*pile_b)->next == (*list)->end_b)
+	else if (tmp_b_next)
 	{
-		free(*pile_b);
-		*pile_b = (*list)->end_b;
-		(*list)->begin_b = (*list)->end_b;
-		(*pile_b)->next = *pile_b;
-		(*pile_b)->prev = *pile_b;
-	}
-	else
-	{
-		tmp = (*pile_b)->next;
-		free(*pile_b);
-		*pile_b = tmp;
+		*pile_b = tmp_b_next;
 		(*list)->begin_b = *pile_b;
-		((*list)->end_b)->next = *pile_b;
-		(*pile_b)->prev = (*list)->end_b;
+		if (tmp_b_next == (*list)->end_b)
+		{
+			(*pile_b)->next = *pile_b;
+			(*pile_b)->prev = *pile_b;
+			(*list)->end_b = *pile_b;
+		}
+		else
+			(*pile_b)->prev = (*list)->end_b;
 	}
 }
 
-void	ft_adjustpile_a(d_arg **pile_a, f_arg **list)
-{
-	d_arg	*tmp;
-	d_arg	*temp;
-
-	if ((*pile_a)->next == *pile_a)
+void	ft_adjustpile_a(d_arg **pile_a, f_arg **list, d_arg **tmp_a_next)
+{	
+	if (!(*tmp_a_next))
 	{
+		*pile_a = NULL;
 		(*list)->begin_a = NULL;
 		(*list)->end_a = NULL;
-		free(*pile_a);
-		*pile_a = NULL;
-		if (*pile_a)
-			printf("lol\n");
 	}
-	else if ((*pile_a)->next == (*list)->end_a)
+	else if ((*tmp_a_next))
 	{
-		temp = *pile_a;
-		free(*pile_a);
-		*pile_a = (*list)->end_a;
-		(*list)->begin_a = (*list)->end_a;
-		(*pile_a)->next = *pile_a;
-		(*pile_a)->prev = *pile_a;
-	}
-	else
-	{
-		tmp = (*pile_a)->next;
-		free(*pile_a);
-		*pile_a = tmp;
+		*pile_a = *tmp_a_next;
 		(*list)->begin_a = *pile_a;
-		((*list)->end_a)->next = *pile_a;
-		(*pile_a)->prev = (*list)->end_a;
+		if ((*tmp_a_next) == (*list)->end_a)
+		{
+			(*pile_a)->next = *pile_a;
+			(*pile_a)->prev = *pile_a;
+			(*list)->end_a = *pile_a;
+		}
+		else
+			(*pile_a)->prev = (*list)->end_a;
 	}
 }

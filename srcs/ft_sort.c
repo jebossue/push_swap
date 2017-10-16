@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/23 17:33:35 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/06 18:48:51 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/16 21:42:18 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,39 @@ void	ft_s(d_arg **pile_a, d_arg **pile_b, int instruction, f_arg **list)
 
 void	ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 {
-	d_arg	*tmp;
+	d_arg	*tmp_b_next;
 
+	tmp_b_next = NULL;
 	if (ft_checkpile_p(*pile_b) == 0)
 		return ;
+	if (*pile_b != (*list)->end_b)
+		tmp_b_next = (*pile_b)->next;
+	if (*pile_a && *pile_a == (*list)->end_a)
+	{
+		(*pile_b)->next = *pile_a;
+		(*pile_b)->prev = (*list)->end_b;
+		(*pile_a)->prev = *pile_b;
+		(*pile_a)->next = *pile_b;
+		*pile_a = *pile_b;
+	}
+	else if (*pile_a && *pile_a != (*list)->end_a)
+	{
+		(*pile_b)->next = *pile_a;
+		(*pile_b)->prev = (*list)->end_a;
+		(*pile_a)->prev = *pile_b;
+		*pile_a = *pile_b;
+	}
+	else if (!(*pile_a))
+	{
+		*pile_a = *pile_b;
+		(*pile_a)->next = *pile_a;
+		(*pile_a)->prev = *pile_a;
+		(*list)->end_a = *pile_a;
+	}
+	(*list)->begin_a = *pile_a;
+	ft_adjustpile_b(pile_b, list, tmp_b_next);
+}
+	/*
 	if ((tmp = (d_arg *)malloc(sizeof(*tmp))) == NULL)
 		return ;
 	tmp->nbr = (*pile_b)->nbr;
@@ -77,36 +106,43 @@ void	ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	(*list)->begin_a = tmp;
 	*pile_a = tmp;
 	ft_adjustpile_b(pile_b, list);
-}
+	*/
 
 void	ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 {
-	d_arg	*tmp;
+	d_arg	*tmp_a_next;
 
+	tmp_a_next = NULL;
 	if (ft_checkpile_p(*pile_a) == 0)
 		return ;
-	if ((tmp = (d_arg *)malloc(sizeof(*tmp))) == NULL)
-		return ;
-	tmp->nbr = (*pile_a)->nbr;
-	if ((*pile_b)->next)
+	if (*pile_a != (*list)->end_a)
+		tmp_a_next = (*pile_a)->next;
+	if (*pile_b && (*pile_b == (*list)->end_b))
 	{
-		(*pile_b)->prev = tmp;
-		tmp->next = *pile_b;
-		tmp->prev = (*list)->end_b;
-		((*list)->end_b)->next = tmp;
+		(*pile_a)->next = *pile_b;
+		(*pile_a)->prev = (*list)->end_a;
+		(*pile_b)->prev = *pile_a;
+		(*pile_b)->next = *pile_a;
+		*pile_b = *pile_a;
 	}
-	else
+	else if (*pile_b && (*pile_b != (*list)->end_b))
 	{
-		(*list)->end_b = tmp;
-		tmp->next = tmp;
-		tmp->prev = tmp;
+		(*pile_a)->next = *pile_b;
+		(*pile_a)->prev = (*list)->end_b;
+		(*pile_b)->prev = *pile_a;
+		*pile_b = *pile_a;
 	}
-	(*list)->begin_b = tmp;
-	*pile_b = tmp;
-	ft_adjustpile_a(pile_a, list);
+	else if (!(*pile_b))
+	{
+		*pile_b = *pile_a;
+		(*pile_b)->next = *pile_b;
+		(*pile_b)->prev = *pile_b;
+		(*list)->end_b = *pile_b;
+	}
+	(*list)->begin_b = *pile_b;
+	ft_adjustpile_a(pile_a, list, &tmp_a_next);
 }
 /*
-
    void	ft_r(char *line, f_arg **list_a, f_arg **list_b, int instruction)
    {
 

@@ -6,71 +6,47 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/06 18:48:48 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/16 21:42:21 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "libft.h"
 
-void	ft_doublelst(d_arg **pile_a, d_arg *new, f_arg **list, int ac)
+void	ft_doublelst(char *av, d_arg **pile_a, f_arg **list)
 {
 	d_arg	*tmp;
-	int		i;
 
-	i = 0;
-	if (!(*pile_a))
+	if ((*pile_a)->next == NULL)
 	{
-		(*list)->begin_a = new;
-		(*list)->end_a = new;
-		*pile_a = new;
+		(*pile_a)->nbr = ft_atoi_long(av);
+		(*pile_a)->next = *pile_a;
 		return ;
 	}
 	tmp = *pile_a;
 	while (tmp->next != NULL)
-	{
 		tmp = tmp->next;
-		i++;
-	}
-	tmp->next = new;
-	new->prev = tmp;
-	if (i == ac - 3)
-	{
-		new->next = *pile_a;
-		(*list)->end_a = new;
-	}
+	
 }
 
-void	ft_createpile_a(h_arg arg, d_arg **pile_a, f_arg **list)
+int		ft_createpile(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 {
-	d_arg	*tmp;
-
 	if ((*list = (f_arg *)malloc(sizeof(*list))) == NULL)
-		return ;
+		return(0);
 	if ((*pile_a = (d_arg *)malloc(sizeof(*pile_a))) == NULL)
-		return ;
-	*pile_a = NULL;
-	while (*arg.av)
-	{
-		if ((tmp = (d_arg *)malloc(sizeof(*tmp))) == NULL)
-			return ;
-		tmp->nbr = ft_atoi(*arg.av);
-		tmp->next = NULL;
-		tmp->prev = NULL;
-		ft_doublelst(pile_a, tmp, list, arg.ac);
-		arg.av++;
-	}
-}
-
-void	ft_createpile_b(d_arg **pile_b, f_arg **list)
-{
+		return(0);
 	if ((*pile_b = (d_arg *)malloc(sizeof(*pile_b))) == NULL)
-		return ;
+		return(0);
+	(*pile_a)->next = NULL;
+	(*pile_a)->prev = NULL;
+	(*pile_a)->nbr = 0;
 	(*pile_b)->next = NULL;
 	(*pile_b)->prev = NULL;
-	(*list)->begin_b = NULL;
-	(*list)->end_b = NULL;
-	printf("pile_b : %p\n", *pile_b);
+	(*pile_b)->nbr = 0;
+	(*list)->begin_a = *pile_a;
+	(*list)->end_a = *pile_a;
+	(*list)->begin_b = *pile_b;
+	(*list)->end_b = *pile_b;
 }
 
 int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
@@ -78,9 +54,28 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 	char	*line;
 	int		instruction;
 	f_arg	*list;
+	char	**full_av;
 
-	line = NULL;
-	list = NULL;
+	if (arg.ac < 2)
+		return (0);
+	if (ft_createpile(&pile_a, &pile_b, &list) == 0)
+		return(0);
+	while (arg.av)
+	{
+		full_av = ft_strsplit(arg.av[i], ' ');
+		if (ft_isint(full_av) == 0)
+		{
+			free(full_av);
+			return (0);
+		}
+		while (full_av)
+		{
+			ft_doublelst(*full_av, &pile_a, &pile_b);
+			full_av++;
+		}
+		arg.av++;
+	}
+	/*
 	if (arg.ac < 2 || ft_isint(arg.av) == 0 || ft_isdoublon(arg.av) == 0)
 		return (0);
 //	if ac == 2 return av;
@@ -101,13 +96,11 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 	ft_visual(pile_a, pile_b, list);
 	printf("free a\n");
 	ft_free_pile_a(pile_a, list);
-	pile_a = NULL;
 	printf("free b\n");
 	ft_free_pile_b(pile_b, list);
-	pile_b = NULL;
 	free(list);
 	list = NULL;
-	line = NULL;
+	line = NULL;*/
 	return (1);
 }
 

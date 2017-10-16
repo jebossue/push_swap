@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/06 18:48:50 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/16 21:42:19 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	ft_free_pile_a(d_arg *param, f_arg *list)
 {
+	printf("yo\n");
 	if (param == list->end_a)
 	{
 		free(param);
@@ -33,7 +34,6 @@ void	ft_free_pile_b(d_arg *param, f_arg *list)
 {
 	if (param == list->end_b)
 	{
-	printf("yo\n");
 		free(param);
 		return ;
 	}
