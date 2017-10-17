@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/16 21:42:11 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/17 21:10:17 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int			ft_isint(char **av);
 int			ft_isdoublon(char **av);
 int			get_next_line(const int fd, char **line);
 int			ft_strarraycmp(char *str, char **rule);
-void		ft_free_pile_a(d_arg *param, f_arg *list);
-void		ft_free_pile_b(d_arg *param, f_arg *list);
+void		ft_free_pile_a(d_arg **param, f_arg **list);
+void		ft_free_pile_b(d_arg **param, f_arg **list);
 int			ft_check_action(char *str);
 void		ft_sort(d_arg **pile_a, d_arg **pile_b, int instruction,
 		f_arg **list);
@@ -55,12 +55,16 @@ void		ft_s(d_arg **pile_a, d_arg **pile_b, int instruction,
 		f_arg **list);
 void		ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list);
 void		ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list);
-void		ft_r(f_arg **list_a, f_arg **list_b, int instruction);
-void		ft_rr(f_arg **list_a, f_arg **list_b, int instruction);
+void		ft_r(f_arg **list, int instruction);
+void		ft_rr(f_arg **list, int instruction);
 int			ft_checkpile_s(d_arg *list);
 int			ft_checkpile_p(d_arg *list);
 void		ft_adjustpile_b(d_arg **pile_b, f_arg **list, d_arg *tmp_b_next);
 void		ft_adjustpile_a(d_arg **pile_a, f_arg **list, d_arg **tmp_a_next);
 void		ft_visual(d_arg *pile_a, d_arg *pile_b, f_arg *list);
+int			ft_putelements(d_arg **pile_a, f_arg **list, h_arg arg);
+void		ft_doublelst(char *av, d_arg **pile_a, f_arg **list);
+void		ft_instruction(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+void		ft_free_piles(f_arg **list);
 
 #endif

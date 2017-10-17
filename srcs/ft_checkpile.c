@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 14:15:25 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/16 21:42:14 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/17 21:10:26 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 int	ft_checkpile_s(d_arg *list)
 {
-	if (list->next == NULL || list->next == list)
+	if (list && (list->next == NULL || list->next == list))
 		return (0);
 	return (1);
 }
 
 int	ft_checkpile_p(d_arg *list)
 {
-	if (!(list->next))
+	if (!(list))
 		return (0);
 	return (1);
 }
