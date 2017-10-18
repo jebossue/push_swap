@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/17 21:10:25 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/18 17:59:06 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	ft_doublelst(char *av, d_arg **pile_a, f_arg **list)
 
 int		ft_createpile(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 {
+	(void)pile_a;
 	if ((*list = (f_arg *)malloc(sizeof(f_arg))) == NULL)
 		return(0);
 	if ((*pile_a = (d_arg *)malloc(sizeof(d_arg))) == NULL)
@@ -82,9 +83,10 @@ int	ft_isdoublonlst(f_arg *lst)
 			tmp = tmp->next;
 		}
 	}
-	tmp = tmp->next;
 	nbr_comp = tmp->nbr;
 	if (nbr == nbr_comp)
+		return (0);
+	if ((lst->begin_a)->nbr == (lst->end_a)->nbr)
 		return (0);
 	return (1);
 }
@@ -96,16 +98,24 @@ int	ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 	if (arg.ac < 2)
 		return (0);
 	if (ft_createpile(&pile_a, &pile_b, &list) == 0)
+	{
+		ft_free_all(&pile_a, &pile_b, &list);
 		return(0);
+	}
 	if (ft_putelements(&pile_a, &list, arg) == 0)
+	{
+		ft_free_all(&pile_a, &pile_b, &list);
 		return (0);
+	}
 	if (ft_isdoublonlst(list) == 0)
+	{
+		ft_free_all(&pile_a, &pile_b, &list);
 		return (0);
+	}
 	ft_visual(pile_a, pile_b, list);
-	printf("free pile_a\n");
-	printf("free pile_b\n");
 	ft_instruction(&list, &pile_a, &pile_b);
-	ft_free_piles(&list);
+	ft_free_pile_a(&pile_a, &list);
+	ft_free_pile_b(&pile_b, &list);
 	free(list);
 	return (1);
 }
@@ -122,7 +132,7 @@ int	main(int ac, char **av)
 	arg.ac = ac;
 	arg.av = av;
 	if (ft_check(arg, pile_a, pile_b) == 0)
-		ft_printf("Error\n");
+		printf("Error\n");
 	while (1);
 	return (0);
 }

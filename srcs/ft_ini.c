@@ -6,54 +6,12 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/17 21:10:27 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/18 17:59:09 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_push_swap.h"
 #include "libft.h"
-
-void	ft_free_pile_a(d_arg **param, f_arg **list)
-{
-/*	printf("yo\n");
-	if (*param == (*list)->end_a)
-	{
-		free(param);
-		return ;
-	}
-	if (!(*list)->end_a)
-	{
-		free(param);
-		return ;
-	}
-	ft_free_pile_a(&((*param)->next), list);
-	free(param);*/
-
-	d_arg	*tmp;
-	d_arg	*temp;
-
-	(void)(*param);
-	tmp = (*list)->begin_a;
-	while (tmp != (*list)->end_a)
-	{
-		temp = tmp->next;
-		free(tmp);
-		tmp = temp;
-	}
-	if (tmp == (*list)->end_a)
-		free(tmp);
-}
-
-void	ft_free_pile_b(d_arg **param, f_arg **list)
-{
-	if (*param == (*list)->end_b)
-	{
-		free(param);
-		return ;
-	}
-	ft_free_pile_b(&((*param)->next), list);
-	free(param);
-}
 
 int	ft_check_actionv2(char *str)
 {

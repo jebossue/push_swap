@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/23 17:33:35 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/17 21:10:24 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/18 17:59:04 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	ft_sort(d_arg **pile_a, d_arg **pile_b, int instruction, f_arg **list)
 	if (instruction == 5)
 		ft_pb(pile_a, pile_b, list);
 	if (instruction >= 6 && instruction <= 8)
-		ft_r(list, instruction);
+		ft_r(pile_a, pile_b, list, instruction);
 	if (instruction >= 9 && instruction <= 11)
-		ft_rr(list, instruction);
+		ft_rr(pile_a, pile_b, list, instruction);
 }
 
 void	ft_s(d_arg **pile_a, d_arg **pile_b, int instruction, f_arg **list)
@@ -76,6 +76,7 @@ void	ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	}
 	else if (!(*list)->begin_a)
 	{
+		free(*pile_a);
 		*pile_a = *pile_b;
 		(*pile_a)->next = *pile_a;
 		(*pile_a)->prev = *pile_a;
@@ -111,6 +112,7 @@ void	ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	}
 	else if ((*list)->begin_b == NULL)
 	{
+		free(*pile_b);
 		*pile_b = *pile_a;
 		(*pile_b)->next = *pile_b;
 		(*pile_b)->prev = *pile_b;

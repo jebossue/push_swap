@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/17 21:10:17 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/18 17:59:01 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void		ft_s(d_arg **pile_a, d_arg **pile_b, int instruction,
 		f_arg **list);
 void		ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list);
 void		ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list);
-void		ft_r(f_arg **list, int instruction);
-void		ft_rr(f_arg **list, int instruction);
+void		ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list,
+		int instruction);
+void		ft_rr(d_arg **pile_a, d_arg **pile_b, f_arg **list,
+		int instruction);
 int			ft_checkpile_s(d_arg *list);
 int			ft_checkpile_p(d_arg *list);
 void		ft_adjustpile_b(d_arg **pile_b, f_arg **list, d_arg *tmp_b_next);
@@ -65,6 +67,7 @@ void		ft_visual(d_arg *pile_a, d_arg *pile_b, f_arg *list);
 int			ft_putelements(d_arg **pile_a, f_arg **list, h_arg arg);
 void		ft_doublelst(char *av, d_arg **pile_a, f_arg **list);
 void		ft_instruction(f_arg **list, d_arg **pile_a, d_arg **pile_b);
-void		ft_free_piles(f_arg **list);
+void		ft_free_full_av(char **full_av);
+void		ft_free_all(d_arg **pile_a, d_arg **pile_b, f_arg **list);
 
 #endif

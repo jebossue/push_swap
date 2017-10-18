@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 15:03:09 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/17 21:10:18 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/18 17:59:03 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		ft_putelements(d_arg **pile_a, f_arg **list, h_arg arg)
 			j++;
 		}
 		i++;
+		ft_free_full_av(full_av);
 	}
 	return (1);
 }
@@ -48,7 +49,7 @@ void	ft_instruction(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 	{
 		if ((instruction = ft_check_action(line)) == 0)
 		{
-			//free pile + list
+			free(line);
 			return ;
 		}
 		ft_sort(pile_a, pile_b, instruction, list);

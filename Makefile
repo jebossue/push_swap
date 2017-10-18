@@ -6,7 +6,7 @@
 #    By: jebossue <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/14 12:56:00 by jebossue          #+#    #+#              #
-#    Updated: 2017/10/17 21:10:22 by jebossue         ###   ########.fr        #
+#    Updated: 2017/10/18 17:59:00 by jebossue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJDIR	= objs
 INCDIR	= includes
 
 SRCNAM	= ft_checker.c ft_ini.c ft_sort.c ft_checkpile.c ft_visual.c\
-		ft_instruction.c ft_rotate.c
+		ft_instruction.c ft_rotate.c ft_free.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
