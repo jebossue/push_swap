@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isint.c                                         :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/04/14 15:03:38 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/20 20:29:40 by jebossue         ###   ########.fr       */
+/*   Created: 2016/12/01 19:21:36 by jebossue          #+#    #+#             */
+/*   Updated: 2017/06/07 16:51:13 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_isint(char **av)
+# define BUFF_SIZE 32
+
+typedef struct	s_struct
 {
-	long int nb;
+	int		ret;
+	char	buff[BUFF_SIZE];
+	int		slash;
+	int		i;
+}				t_struct;
 
-	while (*av)
-	{
-		if (ft_isnbr(**av) == 0)
-			return (0);
-		nb = ft_atoi_long(*av);
-		if ((nb == 0 && ft_strcmp(*av, "0") != 0) || (nb > 2147483647 ||
-					nb < -2147483648))
-			return (0);
-		if (ft_isnbr(ft_atoi_long(*av)) == 0)
-			return (0);
-		av++;
-	}
-	return (1);
-}
+int				get_next_line(const int fd, char **line);
+
+#endif
