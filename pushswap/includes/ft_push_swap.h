@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/20 20:29:30 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/22 17:58:03 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef struct	e_arg
 	struct c_arg	*end_a;
 	struct c_arg	*begin_b;
 	struct c_arg	*end_b;
+	int				size_a;
+	int				pivot;
+	int				*array;
 }				f_arg;
 
 typedef struct	g_arg
@@ -71,5 +74,7 @@ void		ft_free_full_av(char **full_av);
 void		ft_free_all(d_arg **pile_a, d_arg **pile_b, f_arg **list);
 int			ft_isok(f_arg *lst);
 void		ft_algo(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+int			ft_basicsort(int *array, f_arg **list);
+int			ft_issort(f_arg **list, int *array);
 
 #endif
