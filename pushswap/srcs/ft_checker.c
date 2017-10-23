@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/22 17:58:01 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/23 22:24:53 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ int		ft_createpile(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	(*list)->size_a = 0;
 	(*list)->pivot = 0;
 	(*list)->array = NULL;
+	(*list)->size_pivot = 0;
+	(*list)->size_b = 0;
+	(*list)->pivotb = 0;
 	return (1);
 }
 
