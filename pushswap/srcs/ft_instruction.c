@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 15:03:09 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/23 22:24:49 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:29:38 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	ft_pivot(f_arg **list)
 	array[i] = tmp->nbr;
 	(*list)->array = array;
 	ft_basicsort((*list)->array, list);
+	free(array);
 }
 
 void	ft_quicksort(f_arg **list, d_arg **pile_a, d_arg **pile_b)
@@ -95,36 +96,46 @@ void	ft_quicksort(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 		while (((*list)->begin_a)->nbr <= (*list)->pivot)
 		{
 			ft_pb(pile_a, pile_b, list);
-			ft_printf("pb\n");
 			ft_visual(*pile_a, *pile_b, *list);
 			i++;
 		}
 		if (i != (*list)->size_pivot)
 		{
 			ft_r(pile_a, pile_b, list, 6);
-			ft_printf("ra\n");
 		}
 	}
 	ft_size(list);
-	while ((*list)->size_b != 5)
+	while ((*list)->size_b > 5)
 	{
+		i = 0;
+			printf("begin_b%d\n", ((*list)->begin_b)->nbr);
 		ft_pivotb(list);
-		ft_size(list);
-
-	}
-/*	while (ft_issort(list, (*list)->array) != 1)
-	{
-		while ((*list)->size_pivot != 0)
+			printf("begin_b%d\n", ((*list)->begin_b)->nbr);
+		while (i < (*list)->size_pivotb)
 		{
-
+			while (((*list)->begin_b)->nbr > (*list)->pivotb)
+			{
+				ft_pa(pile_a, pile_b, list);
+				ft_visual(*pile_a, *pile_b,*list);
+				i++;
+			}
+			if (i < (*list)->size_pivotb)
+			{
+				ft_r(pile_a, pile_b, list, 7);
+			}
 		}
-	}*/
+		ft_size(list);
+		ft_visual(*pile_a, *pile_b, *list);
+	}
+	ft_fifthelem(list, pile_a, pile_b);
+/*	while (((*list)->begin_a)->nbr <= (*list)->pivot)
+		ft_pb(pile_a, pile_b, list);*/
+
 }
 
 void	ft_algo(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 {
 	ft_size(list);
-	printf("%d\n", (*list)->size_a);
 	if ((*list)->size_a > 5)
 		ft_quicksort(list, pile_a, pile_b);
 //	else

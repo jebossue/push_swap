@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:23:37 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/20 20:29:24 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/24 16:33:26 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_rr(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 	if ((*list)->begin_a && (instruction == 9 || instruction == 11))
 	{
 		*pile_a = (*list)->end_a;
-//		(*pile_a)->next = tmp_first;
-//		(*pile_a)->prev = tmp;
 		(*list)->begin_a = *pile_a;
 		(*list)->end_a = tmp;
+		if (instruction == 9)
+			ft_printf("rra\n");
 	}
 	if ((*list)->end_b)
 	{
@@ -39,11 +39,13 @@ void	ft_rr(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 	if ((*list)->begin_b && (instruction == 10 || instruction == 11))
 	{
 		*pile_b = (*list)->end_b;
-//		(*pile_b)->next = tmp_first;
-//		(*pile_b)->prev = tmp;
 		(*list)->begin_b = *pile_b;
 		(*list)->end_b = tmp;
+		if (instruction == 10)
+			ft_printf("rrb\n");
 	}
+	if (instruction == 11)
+		ft_printf("rrr\n");
 }
 
 void	ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
@@ -61,6 +63,8 @@ void	ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 		*pile_a = (*pile_a)->next;
 		(*list)->begin_a = *pile_a;
 		(*list)->end_a = tmp;
+		if (instruction == 6)
+			ft_printf("ra\n");
 	}
 	if ((*list)->end_b)
 	{
@@ -72,5 +76,9 @@ void	ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 		*pile_b = (*pile_b)->next;
 		(*list)->begin_b = *pile_b;
 		(*list)->end_b = tmp;
+		if (instruction == 7)
+			ft_printf("rb\n");
 	}
+	if (instruction == 8)
+		ft_printf("rr\n");
 }

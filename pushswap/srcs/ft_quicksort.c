@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 15:30:11 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/23 22:24:51 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/24 21:30:08 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_basicsort(int *array, f_arg **list)
 	}
 	(*list)->pivot = array[((*list)->size_a / 2 - 1)];
 	(*list)->size_pivot = (*list)->size_a / 2;
+	printf("size %d\n", (*list)->size_a);
 }
 
 int	ft_issort(f_arg **list, int *array)
@@ -78,9 +79,12 @@ void	ft_pivotb(f_arg **list)
 {
 	d_arg	*tmp;
 	int		i;
-	int		array[(*list)->size_b];
+	int		*array;
 	int		j;
+	int		tmp_nbr;
 
+	if ((array = malloc((*list)->size_b * sizeof(int))) == NULL)
+		return ;// NEED TO FREE THIS
 	tmp = (*list)->begin_b;
 	i = 0;
 	while (tmp != (*list)->end_b)
@@ -92,6 +96,7 @@ void	ft_pivotb(f_arg **list)
 	array[i] = tmp->nbr;
 	i = 0;
 	tmp = (*list)->begin_b;
+	printf("listbegin %d\n", ((*list)->begin_b)->nbr);
 	while (i < (*list)->size_b)
 	{
 		j = i + 1;
@@ -99,38 +104,18 @@ void	ft_pivotb(f_arg **list)
 		{
 			if (array[i] > array[j])
 			{
-				tmp->nbr = array[i];
+				tmp_nbr = array[i];
 				array[i] = array[j];
-				array[j] = tmp->nbr;
+				array[j] = tmp_nbr;
 			}
 			j++;
 		}
 		i++;
 	}
+	printf("sizeb%d\n", (*list)->size_b);
 	(*list)->pivotb = array[(*list)->size_b / 2 - 1];
-	printf("puvotb%d\n", (*list)->pivotb);
+	(*list)->size_pivotb = (*list)->size_b / 2;
+	printf("sizeb pivotb%d\n", (*list)->size_pivotb);
+	printf("pivotb%d\n", (*list)->pivotb);
+	free(array);
 }
-/*
-void	ft_putb(f_arg **list, int pivot, d_arg **pile_a, d_arg **pile_b)
-{
-	int		i;
-
-	if ((*list)->i_pivot != (*list)->size_a)
-		i = 5;
-	else
-		i = ft_lastelem(list);
-	while (i != 0)
-	{
-		if (((*list)->begin_a)->nbr <= pivot)
-		{
-			ft_pb(pile_a, pile_b, list);
-			i--;
-			ft_printf("pb\n");
-			ft_visual(*pile_a, *pile_b, *list);
-		}
-//		if rra ou ra
-		ft_r(pile_a, pile_b, list, 6);
-		ft_printf("ra\n");
-		ft_visual(*pile_a, *pile_b, *list);
-	}
-}*/

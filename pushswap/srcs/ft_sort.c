@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/23 17:33:35 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/20 20:29:25 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/24 16:30:20 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,19 @@ void	ft_s(d_arg **pile_a, d_arg **pile_b, int instruction, f_arg **list)
 		tmp_nbr = (*pile_a)->nbr;
 		(*pile_a)->nbr = ((*pile_a)->next)->nbr;
 		((*pile_a)->next)->nbr = tmp_nbr;
+		if (instruction == 1)
+			ft_printf("sa\n");
 	}
 	if ((instruction == 2 || instruction == 3) && ft_checkpile_s(*pile_b))
 	{
 		tmp_nbr = (*pile_b)->nbr;
 		(*pile_b)->nbr = ((*pile_b)->next)->nbr;
 		((*pile_b)->next)->nbr = tmp_nbr;
+		if (instruction == 2)
+			ft_printf("sb\n");
 	}
+	if (instruction == 3)
+		ft_printf("ss\n");
 }
 
 void	ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list)
@@ -81,6 +87,7 @@ void	ft_pa(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	}
 	(*list)->begin_a = *pile_a;
 	ft_adjustpile_b(pile_b, list, tmp_b_next);
+	ft_printf("pa\n");
 }
 
 void	ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list)
@@ -118,4 +125,5 @@ void	ft_pb(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	}
 	(*list)->begin_b = *pile_b;
 	ft_adjustpile_a(pile_a, list, &tmp_a_next);
+	ft_printf("pb\n");
 }
