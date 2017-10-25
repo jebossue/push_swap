@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/24 16:22:57 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/25 17:55:33 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_createpile(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	(*list)->begin_b = NULL;
 	(*list)->end_b = NULL;
 	(*list)->size_a = 0;
-	(*list)->pivot = 0;
+	(*list)->elementsinb = 0;
 	(*list)->array = NULL;
 	(*list)->size_pivot = 0;
 	(*list)->size_b = 0;
@@ -133,6 +133,5 @@ int		main(int ac, char **av)
 		return (0);
 	if (ft_check(arg, pile_a, pile_b) == 0)
 		ft_printf("Error\n");
-	while (1);
 	return (0);
 }

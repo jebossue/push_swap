@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/24 19:45:58 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/25 17:55:23 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	e_arg
 	int				size_pivot;
 	int				pivotb;
 	int				size_pivotb;
+	int				elementsinb;
 }				f_arg;
 
 typedef struct	g_arg
@@ -86,5 +87,6 @@ void		ft_pivotb(f_arg **list);
 void		ft_fifthelem(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 void		ft_size(f_arg **list);
 void		ft_algothree(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+void		ft_5elementsinb(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 
 #endif
