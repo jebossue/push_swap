@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/25 17:55:33 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/26 16:55:28 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ int		ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 		ft_free_all(&pile_a, &pile_b, &list);
 		return (0);
 	}
-	ft_visual(pile_a, pile_b, list);
 	ft_algo(&list, &pile_a, &pile_b);
 	ft_free_all(&pile_a, &pile_b, &list);
 	return (1);

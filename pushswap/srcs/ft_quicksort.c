@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 15:30:11 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/25 17:55:29 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/26 22:30:08 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,25 +74,13 @@ int		ft_lastelem(f_arg **list)
 	return (i);
 }
 
-void	ft_pivotb(f_arg **list)
+void	ft_pivotbv2(f_arg **list, int *array)
 {
 	d_arg	*tmp;
 	int		i;
-	int		*array;
 	int		j;
 	int		tmp_nbr;
 
-	if ((array = malloc((*list)->size_b * sizeof(int))) == NULL)
-		return ;
-	tmp = (*list)->begin_b;
-	i = 0;
-	while (tmp != (*list)->end_b)
-	{
-		array[i] = tmp->nbr;
-		tmp = tmp->next;
-		i++;
-	}
-	array[i] = tmp->nbr;
 	i = 0;
 	tmp = (*list)->begin_b;
 	while (i < (*list)->size_b)
@@ -110,7 +98,27 @@ void	ft_pivotb(f_arg **list)
 		}
 		i++;
 	}
-	(*list)->pivotb = array[(*list)->size_b / 2 - 1];
-	(*list)->size_pivotb = (*list)->size_b / 2;
+	(*list)->pivotb = array[i - 5];
 	free(array);
+
+}
+
+void	ft_pivotb(f_arg **list)
+{
+	d_arg	*tmp;
+	int		i;
+	int		*array;
+
+	if ((array = malloc((*list)->size_b * sizeof(int))) == NULL)
+		return ;
+	tmp = (*list)->begin_b;
+	i = 0;
+	while (tmp != (*list)->end_b)
+	{
+		array[i] = tmp->nbr;
+		tmp = tmp->next;
+		i++;
+	}
+	array[i] = tmp->nbr;
+	ft_pivotbv2(list, array);
 }
