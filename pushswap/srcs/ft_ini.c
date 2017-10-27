@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/12 18:28:36 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 18:25:51 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 21:17:28 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,18 @@ int	ft_check_action(char *str)
 	if (ft_strcmp(str, "pb") == 0)
 		return (5);
 	return (ft_check_actionv2(str));
+}
+
+int	ft_createpilev2(d_arg **pile_a, d_arg **pile_b, f_arg **list)
+{
+	(void)pile_a;
+	(void)pile_b;
+	(*list)->size_pivotb = 0;
+	(*list)->option = 0;
+	(*list)->position_r = 0;
+	(*list)->position_rr = 0;
+	(*pile_a)->flag = 0;
+	(*pile_b)->flag = 0;
+	(*list)->pivot_bloc = 0;
+	return (1);
 }

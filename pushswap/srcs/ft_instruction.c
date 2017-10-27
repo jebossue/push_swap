@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 15:03:09 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 22:31:03 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 21:23:13 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int		ft_putelements(d_arg **pile_a, f_arg **list, h_arg arg)
 	int		j;
 
 	i = 0;
+	if ((*list)->option == 1)
+		arg.av++;
 	while (arg.av[i])
 	{
 		full_av = ft_strsplit(arg.av[i], ' ');
@@ -88,112 +90,39 @@ void	ft_pivot(f_arg **list)
 void	ft_quicksort(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 {
 	int	i;
-	int	elemsort;
 
 	i = 0;
+	ft_visual(*pile_a, *pile_b, *list);
 	ft_pivot(list);
 	while (i < (*list)->size_pivot)
 	{
-		while (((*list)->begin_a)->nbr <= (*list)->pivot)
-		{
-			ft_pb(pile_a, pile_b, list);
-			i++;
-		}
-		if (i != (*list)->size_pivot)
-		{
-			ft_r(pile_a, pile_b, list, 6);
-		}
-	}
-	ft_size(list);
-	ft_pivotb(list);
-	while ((*list)->size_b > 5)
-	{
-		i = 0;
-		ft_pivotb(list);
-		while (i < 5)
-		{
-			if (((*list)->begin_b)->nbr >= (*list)->pivotb)
-			{
-				ft_pa(pile_a, pile_b, list);
-				i++;
-			}
-			else
-				ft_r(pile_a, pile_b, list, 7);
-		}
-	ft_size(list);
-	}
-	elemsort = (*list)->size_b;
-	if ((*list)->size_b >= 3 && (*list)->size_b <= 5)
-	{
-		ft_fifthelem(list, pile_a, pile_b);
-		(*list)->size_pivot = (*list)->size_pivot - elemsort;
-	}
-	if ((*list)->size_b > 0 && (*list)->size_b < 3)
-	{
-		ft_algotwo(list, pile_a, pile_b);
-		(*list)->size_pivot = (*list)->size_pivot - elemsort;
-	}
-	while ((*list)->size_pivot != 0)
-	{
-		i = 0;
-		while (i < 5)
-		{
-			ft_pb(pile_a, pile_b, list);
-			i++;
-		}
-		ft_size(list);
-		ft_fifthelem(list, pile_a, pile_b);
-		(*list)->size_pivot = (*list)->size_pivot - 5;
-	}
-	ft_size(list);
-	if ((*list)->size_a % 2 == 1)
-		(*list)->size_pivot = (*list)->size_a / 2 + 1;
-	else
-		(*list)->size_pivot = (*list)->size_a / 2;
-	while (((*list)->begin_a)->nbr >= (*list)->pivot)
+		ft_r_or_rr_a(list, pile_a, pile_b);
+		((*list)->begin_a)->flag = 1;
 		ft_pb(pile_a, pile_b, list);
+		i++;
+	}
 	ft_size(list);
-	ft_pivotb(list);
+	printf("pivot %d\n", (*list)->pivot);
 	while ((*list)->size_b > 5)
 	{
 		i = 0;
 		ft_pivotb(list);
-		while (i < 5)
+		printf("pivotb %d\n", (*list)->pivotb);
+		if ((*list)->size_b % 2 != 0)
+			(*list)->elementsinb = (*list)->size_b / 2 + 1;
+		else
+			(*list)->elementsinb = (*list)->size_b / 2;
+		while (i < (*list)->elementsinb)
 		{
-			if (((*list)->begin_b)->nbr >= (*list)->pivotb)
-			{
-				ft_pa(pile_a, pile_b, list);
-				i++;
-			}
-			else
-				ft_r(pile_a, pile_b, list, 7);
-		}
-	ft_size(list);
-	}
-	elemsort = (*list)->size_b;
-	if ((*list)->size_b >= 3 && (*list)->size_b <= 5)
-	{
-		ft_fifthelem(list, pile_a, pile_b);
-		(*list)->size_pivot = (*list)->size_pivot - elemsort;
-	}
-	if ((*list)->size_b > 0 && (*list)->size_b < 3)
-	{
-		ft_algotwo(list, pile_a, pile_b);
-		(*list)->size_pivot = (*list)->size_pivot - elemsort;
-	}
-	while ((*list)->size_pivot != 0)
-	{
-		i = 0;
-		while (i < 5)
-		{
-			ft_pb(pile_a, pile_b, list);
+			ft_r_or_rr_b(list, pile_a, pile_b);
+			ft_pa(pile_a, pile_b, list);
 			i++;
 		}
 		ft_size(list);
-		ft_fifthelem(list, pile_a, pile_b);
-		(*list)->size_pivot = (*list)->size_pivot - 5;
+		ft_putflags(list);
 	}
-	ft_visual(*pile_a, *pile_b, *list);
+	ft_fifthelem(list, pile_a, pile_b);
+	ft_sort_rest(list, pile_a, pile_b);
 }
 
 void	ft_algo(f_arg **list, d_arg **pile_a, d_arg **pile_b)

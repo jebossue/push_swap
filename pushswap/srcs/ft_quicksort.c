@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 15:30:11 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 22:30:08 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 18:18:19 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_basicsort(int *array, f_arg **list)
 	(*list)->size_pivot = (*list)->size_a / 2;
 }
 
-int	ft_issort(f_arg **list, int *array)
+int		ft_issort(f_arg **list, int *array)
 {
 	d_arg	*tmp;
 	int		i;
@@ -98,9 +98,8 @@ void	ft_pivotbv2(f_arg **list, int *array)
 		}
 		i++;
 	}
-	(*list)->pivotb = array[i - 5];
+	(*list)->pivotb = array[(*list)->size_b / 2];
 	free(array);
-
 }
 
 void	ft_pivotb(f_arg **list)

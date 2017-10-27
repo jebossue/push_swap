@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 13:41:10 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 21:46:17 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 18:44:32 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,23 @@ void	ft_5elementsinb(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 	}
 }
 
+void	ft_rb_or_rrbv2(f_arg **list, d_arg **pile_a, d_arg **pile_b,
+		int position)
+{
+	if (position >= 3)
+	{
+		if (position == 5 || (position < 5 && (*list)->size_b == 5))
+			ft_rr(pile_a, pile_b, list, 10);
+		if (position == 4 || position < 4)
+			ft_rr(pile_a, pile_b, list, 10);
+		if (position == 3)
+			ft_rr(pile_a, pile_b, list, 10);
+	}
+	if (position == 2)
+		ft_r(pile_a, pile_b, list, 7);
+	ft_pa(pile_a, pile_b, list);
+}
+
 void	ft_rb_or_rrb(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 {
 	d_arg	*tmp;
@@ -90,18 +107,7 @@ void	ft_rb_or_rrb(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 		max = tmp->nbr;
 		position = i;
 	}
-	if (position >= 3)
-	{
-		if (position == 5 || (position < 5 && (*list)->size_b == 5))
-			ft_rr(pile_a, pile_b, list, 10);
-		if (position == 4 || position < 4)
-			ft_rr(pile_a, pile_b, list, 10);
-		if (position == 3)
-			ft_rr(pile_a, pile_b, list, 10);
-	}
-	if (position == 2)
-		ft_r(pile_a, pile_b, list, 7);
-	ft_pa(pile_a, pile_b, list);
+	ft_rb_or_rrbv2(list, pile_a, pile_b, position);
 }
 
 void	ft_fifthelem(f_arg **list, d_arg **pile_a, d_arg **pile_b)

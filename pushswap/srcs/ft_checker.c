@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 11:18:18 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 16:55:28 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 14:02:28 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	ft_doublelst(char *av, d_arg **pile_a, f_arg **list)
 
 int		ft_createpile(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 {
-	(void)pile_a;
 	if ((*list = (f_arg *)malloc(sizeof(f_arg))) == NULL)
 		return (0);
 	if ((*pile_a = (d_arg *)malloc(sizeof(d_arg))) == NULL)
@@ -64,8 +63,9 @@ int		ft_createpile(d_arg **pile_a, d_arg **pile_b, f_arg **list)
 	(*list)->array = NULL;
 	(*list)->size_pivot = 0;
 	(*list)->size_b = 0;
+	(*list)->pivot = 0;
 	(*list)->pivotb = 0;
-	(*list)->size_pivotb = 0;
+	ft_createpilev2(pile_a, pile_b, list);
 	return (1);
 }
 
@@ -102,6 +102,8 @@ int		ft_check(h_arg arg, d_arg *pile_a, d_arg *pile_b)
 		ft_free_all(&pile_a, &pile_b, &list);
 		return (0);
 	}
+	if (ft_strcmp(arg.av[0], "-v") == 0)
+		list->option = 1;
 	if (ft_putelements(&pile_a, &list, arg) == 0)
 	{
 		ft_free_all(&pile_a, &pile_b, &list);

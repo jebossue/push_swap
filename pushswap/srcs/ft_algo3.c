@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 15:57:22 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 21:46:20 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 13:38:59 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,19 +64,19 @@ void	ft_papapa(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 
 void	ft_crease(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 {
-		ft_rr(pile_a, pile_b, list, 10);
-		ft_pa(pile_a, pile_b, list);
-		ft_s(pile_a, pile_b, 2, list);
-		ft_pa(pile_a, pile_b, list);
-		ft_pa(pile_a, pile_b, list);
+	ft_rr(pile_a, pile_b, list, 10);
+	ft_pa(pile_a, pile_b, list);
+	ft_s(pile_a, pile_b, 2, list);
+	ft_pa(pile_a, pile_b, list);
+	ft_pa(pile_a, pile_b, list);
 }
 
 void	ft_lastthree(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 {
-		ft_pa(pile_a, pile_b, list);
-		ft_s(pile_a, pile_b, 2, list);
-		ft_pa(pile_a, pile_b, list);
-		ft_pa(pile_a, pile_b, list);
+	ft_pa(pile_a, pile_b, list);
+	ft_s(pile_a, pile_b, 2, list);
+	ft_pa(pile_a, pile_b, list);
+	ft_pa(pile_a, pile_b, list);
 }
 
 void	ft_algothree(f_arg **list, d_arg **pile_a, d_arg **pile_b)

@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/26 18:19:38 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 21:17:02 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct	c_arg
 {
 	int				nbr;
+	int				flag;
 	struct c_arg	*next;
 	struct c_arg	*prev;
 }				d_arg;
@@ -42,6 +43,10 @@ typedef struct	e_arg
 	int				pivotb;
 	int				size_pivotb;
 	int				elementsinb;
+	int				option;
+	int				position_r;
+	int				position_rr;
+	int				pivot_bloc;
 }				f_arg;
 
 typedef struct	g_arg
@@ -89,5 +94,10 @@ void		ft_size(f_arg **list);
 void		ft_algothree(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 void		ft_5elementsinb(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 void		ft_algotwo(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+int			ft_createpilev2(d_arg **pile_a, d_arg **pile_b, f_arg **list);
+void		ft_r_or_rr_a(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+void		ft_r_or_rr_b(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+void		ft_putflags(f_arg **list);
+void		ft_sort_rest(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 
 #endif

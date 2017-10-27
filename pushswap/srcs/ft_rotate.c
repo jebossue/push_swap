@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 17:23:37 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/24 16:33:26 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/27 14:06:24 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ void	ft_rr(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 		(*list)->begin_a = *pile_a;
 		(*list)->end_a = tmp;
 		if (instruction == 9)
+		{
 			ft_printf("rra\n");
+			if ((*list)->option == 1)
+				ft_visual(*pile_a, *pile_b, *list);
+		}
 	}
 	if ((*list)->end_b)
 	{
@@ -42,10 +46,20 @@ void	ft_rr(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 		(*list)->begin_b = *pile_b;
 		(*list)->end_b = tmp;
 		if (instruction == 10)
+		{
 			ft_printf("rrb\n");
+			if ((*list)->option == 1)
+				ft_visual(*pile_a, *pile_b, *list);
+		}
+
 	}
 	if (instruction == 11)
+	{
 		ft_printf("rrr\n");
+		if ((*list)->option == 1)
+			ft_visual(*pile_a, *pile_b, *list);
+	}
+
 }
 
 void	ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
@@ -64,7 +78,11 @@ void	ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 		(*list)->begin_a = *pile_a;
 		(*list)->end_a = tmp;
 		if (instruction == 6)
+		{
 			ft_printf("ra\n");
+			if ((*list)->option == 1)
+				ft_visual(*pile_a, *pile_b, *list);
+		}
 	}
 	if ((*list)->end_b)
 	{
@@ -77,8 +95,16 @@ void	ft_r(d_arg **pile_a, d_arg **pile_b, f_arg **list, int instruction)
 		(*list)->begin_b = *pile_b;
 		(*list)->end_b = tmp;
 		if (instruction == 7)
+		{
 			ft_printf("rb\n");
+			if ((*list)->option == 1)
+				ft_visual(*pile_a, *pile_b, *list);
+		}
 	}
 	if (instruction == 8)
+	{
 		ft_printf("rr\n");
+		if ((*list)->option == 1)
+			ft_visual(*pile_a, *pile_b, *list);
+	}
 }
