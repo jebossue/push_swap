@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/14 12:32:44 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/27 21:17:02 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/28 20:47:40 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ int			ft_createpilev2(d_arg **pile_a, d_arg **pile_b, f_arg **list);
 void		ft_r_or_rr_a(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 void		ft_r_or_rr_b(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 void		ft_putflags(f_arg **list);
-void		ft_sort_rest(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+void		ft_sort_rest(f_arg **list, d_arg **pile_a, d_arg **pile_b,
+		int flag_pivot);
+void		ft_separateb(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+int			ft_isalreadysort(f_arg **list, int flagelem);
+void		ft_simplesort(f_arg **list, d_arg **pile_a, d_arg **pile_b);
+void		ft_simplethree(f_arg **list, d_arg **pile_a, d_arg **pile_b);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jebossue <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/14 12:56:00 by jebossue          #+#    #+#              #
-#    Updated: 2017/10/27 20:49:42 by jebossue         ###   ########.fr        #
+#    Updated: 2017/10/28 20:47:41 by jebossue         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ INCDIR	= includes
 
 SRCNAM	= ft_checker.c ft_ini.c ft_sort.c ft_checkpile.c ft_visual.c\
 		ft_instruction.c ft_rotate.c ft_free.c ft_quicksort.c ft_algo5elem.c\
-		ft_algo3.c ft_r_or_rr.c ft_algofinal.c
+		ft_algo3.c ft_r_or_rr.c ft_algofinal.c ft_algofinal2.c ft_simplesort.c\
+		ft_simplethree.c
 
 SRC		= $(SRCNAM:%=$(SRCDIR)/%)
 OBJ		= $(SRC:%.c=%.o)

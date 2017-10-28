@@ -6,7 +6,7 @@
 /*   By: jebossue <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/17 15:03:09 by jebossue          #+#    #+#             */
-/*   Updated: 2017/10/27 21:23:13 by jebossue         ###   ########.fr       */
+/*   Updated: 2017/10/28 20:47:45 by jebossue         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,10 @@ void	ft_pivot(f_arg **list)
 void	ft_quicksort(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 {
 	int	i;
+	int	flag_pivot;
 
 	i = 0;
-	ft_visual(*pile_a, *pile_b, *list);
+//	ft_visual(*pile_a, *pile_b, *list);
 	ft_pivot(list);
 	while (i < (*list)->size_pivot)
 	{
@@ -101,28 +102,22 @@ void	ft_quicksort(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 		ft_pb(pile_a, pile_b, list);
 		i++;
 	}
-	ft_size(list);
-	printf("pivot %d\n", (*list)->pivot);
-	while ((*list)->size_b > 5)
-	{
-		i = 0;
-		ft_pivotb(list);
-		printf("pivotb %d\n", (*list)->pivotb);
-		if ((*list)->size_b % 2 != 0)
-			(*list)->elementsinb = (*list)->size_b / 2 + 1;
-		else
-			(*list)->elementsinb = (*list)->size_b / 2;
-		while (i < (*list)->elementsinb)
-		{
-			ft_r_or_rr_b(list, pile_a, pile_b);
-			ft_pa(pile_a, pile_b, list);
-			i++;
-		}
-		ft_size(list);
-		ft_putflags(list);
-	}
+//	printf("SEPARATEB\n");
+	ft_separateb(list, pile_a, pile_b);
+	flag_pivot = ((*list)->begin_b)->flag;
+//	printf("TRI5\n");
 	ft_fifthelem(list, pile_a, pile_b);
-	ft_sort_rest(list, pile_a, pile_b);
+//	printf("REST\n");
+	ft_sort_rest(list, pile_a, pile_b, 0);
+//	printf("REST\n");
+	while (((*list)->begin_a)->nbr > (*list)->pivot)
+		ft_pb(pile_a, pile_b, list);
+//	printf("SEPARATEB\n");
+	ft_separateb(list, pile_a, pile_b);
+//	printf("TRI5\n");
+	ft_fifthelem(list, pile_a, pile_b);
+//	printf("REST\n");
+	ft_sort_rest(list, pile_a, pile_b, flag_pivot);
 }
 
 void	ft_algo(f_arg **list, d_arg **pile_a, d_arg **pile_b)
@@ -130,6 +125,6 @@ void	ft_algo(f_arg **list, d_arg **pile_a, d_arg **pile_b)
 	ft_size(list);
 	if ((*list)->size_a > 5)
 		ft_quicksort(list, pile_a, pile_b);
-//	else
-//		ft_exception(list);
+	else
+		ft_simplesort(list, pile_a, pile_b);
 }
